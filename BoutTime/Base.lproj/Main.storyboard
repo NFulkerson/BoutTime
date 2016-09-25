@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake to complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKr-Qy-moZ">
@@ -31,7 +31,7 @@
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0cF-MU-wv6">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-tf-0y3">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-tf-0y3">
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-Fa-cDG">
                                                 <subviews>
@@ -106,17 +106,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.1647058824" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GlJ-PE-HTW" firstAttribute="top" secondItem="0cF-MU-wv6" secondAttribute="bottom" constant="23" id="2Vp-CO-ztI"/>
+                            <constraint firstItem="GlJ-PE-HTW" firstAttribute="top" secondItem="0cF-MU-wv6" secondAttribute="bottom" constant="5" id="2Vp-CO-ztI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZKr-Qy-moZ" secondAttribute="bottom" constant="20" id="94I-eT-fVf"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Nsq-69-V26"/>
                             <constraint firstItem="ZKr-Qy-moZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Orn-el-UOO"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OzD-Sv-VXn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="U6D-eg-YL2" secondAttribute="trailing" constant="25" id="Qy9-Ja-csO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="U6D-eg-YL2" secondAttribute="trailing" constant="30" id="Qy9-Ja-csO"/>
                             <constraint firstItem="GlJ-PE-HTW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R52-9J-RWf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="O0u-I8-zRw" secondAttribute="trailing" constant="25" id="TsJ-rC-3yd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LcL-YW-p40" secondAttribute="trailing" constant="25" id="VnG-Nt-Qx1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O0u-I8-zRw" secondAttribute="trailing" constant="30" id="TsJ-rC-3yd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LcL-YW-p40" secondAttribute="trailing" constant="30" id="VnG-Nt-Qx1"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jTU-WE-JU5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dij-9t-DD1" secondAttribute="trailing" constant="25" id="wCF-oD-T6f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dij-9t-DD1" secondAttribute="trailing" constant="30" id="wCF-oD-T6f"/>
                             <constraint firstItem="ZKr-Qy-moZ" firstAttribute="top" secondItem="GlJ-PE-HTW" secondAttribute="bottom" constant="8" id="xf0-Qb-iNj"/>
                         </constraints>
                     </view>
