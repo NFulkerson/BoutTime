@@ -7,49 +7,56 @@
 //
 
 import UIKit
+import GameKit
 
 class ViewController: UIViewController {
 
     @IBOutlet var labelCollection: [UILabel]!
     
+    @IBOutlet weak var gameTimerLabel: UILabel!
     // Game tracking variables
     var score: Int = 0
     var rounds: Int = 6
     var questionsAsked: Int = 0
-    var askedIndexes: [Int] = []
+    var presentedEvents: [Event] = []
+    var timeToAnswer: Int = 60
+    let eventsList = EventData()
     
     @IBAction func moveLabelDown(_ sender: UIButton) {
-        print("Label at \(sender.tag) should move down.")
-        // TODO: Factor this out into a wrapper function.
-        swap(&labelCollection[sender.tag].text, &labelCollection[sender.tag + 1].text)
+        // TODO: Needs to handle cases in which presentedEvents is empty, for whatever reason
+        // we swap positions of events in the array at an index indicated by the sender's IB tag
+        // which ranges from 0 to 3, each correlated with
+        // the label's position in the interface.
+        swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag + 1])
+        // we then go over each label and update its text to properly match the new indexes.
+        // Since we are dealing with a very small subset of items, this isn't an issue
+        // We could likely refactor it to only deal with the values that were swapped,
+        // but this prevents things from going totally out of sync.
+        setupLabels()
     }
     
     @IBAction func moveLabelUp(_ sender: UIButton) {
-        print("Label at \(sender.tag) should move up.")
-        swap(&labelCollection[sender.tag].text, &labelCollection[sender.tag - 1].text)
+        // identical to moveLabelDown, but inverted. May be a good case for refactor.
+        swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag - 1])
+        setupLabels()
     }
     // TODO: Proper error handling
     func checkAnswers() {
-        guard let label1 = labelCollection[0].text,
-            let label2 = labelCollection[1].text,
-            let label3 = labelCollection[2].text,
-            let label4 = labelCollection[3].text
-        else {
-            print("Whoops!")
-            return
-        }
-        // TODO: Should check timestamp instead of label
-        if label1 <= label2 && label2 <= label3 && label3 <= label4 {
+        // TODO: Refactoring.
+        if presentedEvents[0].eventDate <= presentedEvents[1].eventDate &&
+            presentedEvents[1].eventDate <= presentedEvents[2].eventDate &&
+            presentedEvents[2].eventDate <= presentedEvents[3].eventDate {
             score += 1
-        } else {
-            print("WRONG!")
         }
         print(score)
     }
     
+    // TODO: Implement timer.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupChallenge()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,12 +79,36 @@ class ViewController: UIViewController {
     
     func setupChallenge() {
         // TODO: Placeholder for label setup.
+        retrieveEvents()
+        setupLabels()
     }
 
     // Helper Methods
+    func retrieveEvents() {
+        while presentedEvents.count < 4 {
+            var event = eventsList.getRandomEvent()
+            if presentedEvents.contains(event) {
+                while presentedEvents.contains(event) {
+                    event = eventsList.getRandomEvent()
+                }
+            }
+            presentedEvents.append(event)
+        }
+        print(presentedEvents)
+    }
+    
+    func setupLabels() {
+        var eventIndex = 0
+        for label in labelCollection {
+            label.text = presentedEvents[eventIndex].title
+            eventIndex += 1
+        }
+    }
+    
     func nextRound() {
         // Checking equality here can lead to an endless loop of questions, if you
         // abuse the checkAnswer function.
+        presentedEvents = []
         if questionsAsked >= rounds {
             // Game is over
             displayScore()
@@ -89,14 +120,11 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        askedIndexes = []
+        
         questionsAsked = 0
         score = 0
     }
     
-    func alreadyAskedQuestion(questionIndex: Int) -> Bool {
-        return askedIndexes.contains(questionIndex)
-    }
     
 }
 

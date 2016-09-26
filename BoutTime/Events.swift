@@ -7,11 +7,18 @@
 //
 
 import Foundation
+import GameKit
 
 struct Event {
     let title: String
     let eventInfoURI: String
     let eventDate: Date
+}
+// Extend Event type so we can see if we are already using that event somewhere.
+extension Event: Equatable {
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.title == rhs.title
+    }
 }
 
 enum EventError: Error {
@@ -22,7 +29,14 @@ enum EventError: Error {
 }
 
 struct EventData {
-    let data: [Event] = [
+    // keep track of which events are returned so only unique events
+    // are presented.
+    // we could reset this if the count has reached four, as that would mean
+    // our view were properly set up.
+    // we might even be able to deliver all four events in one request and handle it all on the data side.
+    var currentEvents: [Event] = []
+    
+    let events: [Event] = [
         Event(title: "Nintendo founded", eventInfoURI: "https://en.wikipedia.org/wiki/Nintendo", eventDate: Date(timeIntervalSince1970: -2533161600)),
         Event(title: "Atari 2600 released.", eventInfoURI: "https://en.wikipedia.org/wiki/Atari_2600", eventDate: Date(timeIntervalSince1970: 242827200)),
         Event(title: "NeXT, Inc. founded by Steve Jobs.", eventInfoURI: "https://en.wikipedia.org/wiki/NeXT", eventDate: Date(timeIntervalSince1970: 476625600)),
@@ -39,6 +53,14 @@ struct EventData {
         Event(title: "Zelda: A Link to the Past released.", eventInfoURI: "", eventDate: Date())
     ]
     
+    func getRandomEvent() -> Event {
+        let randomIndex = getRandomIndex()
+        return events[randomIndex]
+    }
+    
+    private func getRandomIndex() -> Int {
+        return GKRandomSource.sharedRandom().nextInt(upperBound: events.count)
+    }
 }
 
 
