@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         // we then go over each label and update its text to properly match the new indexes.
         // Since we are dealing with a very small subset of items, this isn't an issue
         // We could likely refactor it to only deal with the values that were swapped,
-        // but this prevents things from going totally out of sync.
+        // but this way ensures clean state.
         setupLabels()
     }
     
@@ -40,13 +40,17 @@ class ViewController: UIViewController {
         swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag - 1])
         setupLabels()
     }
+    
     // TODO: Proper error handling
     func checkAnswers() {
         // TODO: Refactoring.
+        print("\(presentedEvents)")
         if presentedEvents[0].eventDate <= presentedEvents[1].eventDate &&
             presentedEvents[1].eventDate <= presentedEvents[2].eventDate &&
             presentedEvents[2].eventDate <= presentedEvents[3].eventDate {
             score += 1
+            // TODO: Introduce a delay and indicate correct/incorrect via label.
+            nextRound()
         }
         print(score)
     }
@@ -79,6 +83,7 @@ class ViewController: UIViewController {
     
     func setupChallenge() {
         // TODO: Placeholder for label setup.
+        questionsAsked += 1
         retrieveEvents()
         setupLabels()
     }
