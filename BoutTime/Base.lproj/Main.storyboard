@@ -167,7 +167,7 @@
         <!--Score Modal View Controller-->
         <scene sceneID="RZg-Qu-BtO">
             <objects>
-                <viewController id="9dJ-ja-N4I" customClass="ScoreModalViewController" sceneMemberID="viewController">
+                <viewController id="9dJ-ja-N4I" customClass="ScoreModalViewController" customModule="BoutTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vo1-0h-CCy"/>
                         <viewControllerLayoutGuide type="bottom" id="v5g-m3-URZ"/>

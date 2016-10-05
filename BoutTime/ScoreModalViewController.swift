@@ -13,10 +13,19 @@ class ScoreModalViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
+    var score: Int?
+    var rounds: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let score = self.score, let rounds = self.rounds {
+            scoreLabel.text = "\(score)/\(rounds)" 
+        } else {
+            scoreLabel.text = "Uh-oh"
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -52,7 +52,9 @@ class ViewController: UIViewController {
         nextRoundButton.isHidden = true
         if questionsAsked >= rounds {
             // Game is over
-            shouldPerformSegue(withIdentifier: "showScoreModalSegue", sender: nil)
+            print("Game has ended.")
+            print("Initiate segue.")
+            performSegue(withIdentifier: "showScoreModalSegue", sender: self)
         } else {
             // Continue game
             setupChallenge()
@@ -83,9 +85,11 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Preparing to segue to \(segue)")
         if segue.identifier == "showScoreModalSegue" {
             if let scoreView = segue.destination as? ScoreModalViewController {
-                scoreView.scoreLabel.text = "\(score)/\(rounds)"
+                scoreView.score = score
+                scoreView.rounds = rounds
                 playAgain()
             }
         }
@@ -100,13 +104,13 @@ class ViewController: UIViewController {
             presentedEvents[1].eventDate <= presentedEvents[2].eventDate &&
             presentedEvents[2].eventDate <= presentedEvents[3].eventDate {
             score += 1
-            // TODO: Introduce a delay and indicate correct/incorrect via label.
             nextRoundButton.setImage(UIImage(named: "next_round_success.png"), for: .normal)
         } else {
             nextRoundButton.setImage(UIImage(named: "next_round_fail.png"), for: .normal)
         }
         
         nextRoundButton.isHidden = false
+        // TODO: Remove after debugging.
         print(score)
     }
     
