@@ -121,11 +121,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5f-1L-8TW">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="9sv-iQ-45x"/>
+                                    <constraint firstAttribute="width" constant="184" id="hec-70-9Yd"/>
+                                </constraints>
+                                <state key="normal" image="next_round_success.png"/>
+                                <connections>
+                                    <action selector="nextRound" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpy-dw-WfV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.1647058824" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GlJ-PE-HTW" firstAttribute="top" secondItem="0cF-MU-wv6" secondAttribute="bottom" constant="5" id="2Vp-CO-ztI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZKr-Qy-moZ" secondAttribute="bottom" constant="20" id="94I-eT-fVf"/>
+                            <constraint firstItem="e5f-1L-8TW" firstAttribute="top" secondItem="U6D-eg-YL2" secondAttribute="bottom" constant="7" id="JD2-n6-Vq7"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Nsq-69-V26"/>
                             <constraint firstItem="ZKr-Qy-moZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Orn-el-UOO"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OzD-Sv-VXn"/>
@@ -133,6 +144,7 @@
                             <constraint firstItem="GlJ-PE-HTW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R52-9J-RWf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O0u-I8-zRw" secondAttribute="trailing" constant="30" id="TsJ-rC-3yd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LcL-YW-p40" secondAttribute="trailing" constant="30" id="VnG-Nt-Qx1"/>
+                            <constraint firstItem="e5f-1L-8TW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WoQ-Eb-YYg"/>
                             <constraint firstItem="0cF-MU-wv6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jTU-WE-JU5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dij-9t-DD1" secondAttribute="trailing" constant="30" id="wCF-oD-T6f"/>
                             <constraint firstItem="ZKr-Qy-moZ" firstAttribute="top" secondItem="GlJ-PE-HTW" secondAttribute="bottom" constant="8" id="xf0-Qb-iNj"/>
@@ -140,20 +152,75 @@
                     </view>
                     <connections>
                         <outlet property="gameTimerLabel" destination="GlJ-PE-HTW" id="dwo-xE-t5T"/>
+                        <outlet property="nextRoundButton" destination="e5f-1L-8TW" id="gLB-63-ikl"/>
                         <outletCollection property="labelCollection" destination="Dij-9t-DD1" collectionClass="NSMutableArray" id="MSZ-Ig-cmY"/>
                         <outletCollection property="labelCollection" destination="O0u-I8-zRw" collectionClass="NSMutableArray" id="d1t-Ff-OZY"/>
                         <outletCollection property="labelCollection" destination="LcL-YW-p40" collectionClass="NSMutableArray" id="na7-Ml-1K0"/>
                         <outletCollection property="labelCollection" destination="U6D-eg-YL2" collectionClass="NSMutableArray" id="yuU-b7-HLF"/>
+                        <segue destination="9dJ-ja-N4I" kind="presentation" identifier="showScoreModalSegue" id="KLn-ek-UBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="35.869565217391305"/>
+            <point key="canvasLocation" x="46" y="36"/>
+        </scene>
+        <!--Score Modal View Controller-->
+        <scene sceneID="RZg-Qu-BtO">
+            <objects>
+                <viewController id="9dJ-ja-N4I" customClass="ScoreModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vo1-0h-CCy"/>
+                        <viewControllerLayoutGuide type="bottom" id="v5g-m3-URZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6tD-NE-OJM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5D-jY-wod">
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" red="1" green="0.97730777140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJz-zw-FoT">
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkt-3I-LHq">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9WA-Lr-tec"/>
+                                    <constraint firstAttribute="width" constant="144" id="M7R-bH-zfs"/>
+                                </constraints>
+                                <state key="normal" image="play_again.png"/>
+                                <connections>
+                                    <action selector="dismissScoreModal" destination="9dJ-ja-N4I" eventType="touchUpInside" id="eRp-Ow-eT6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.027450980390000001" green="0.1647058824" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fkt-3I-LHq" firstAttribute="centerX" secondItem="6tD-NE-OJM" secondAttribute="centerX" id="4hq-4p-xLB"/>
+                            <constraint firstItem="t5D-jY-wod" firstAttribute="centerX" secondItem="6tD-NE-OJM" secondAttribute="centerX" id="Ahg-LL-FbE"/>
+                            <constraint firstItem="fkt-3I-LHq" firstAttribute="top" secondItem="t5D-jY-wod" secondAttribute="bottom" constant="49" id="Eh6-c6-6bZ"/>
+                            <constraint firstItem="FJz-zw-FoT" firstAttribute="centerX" secondItem="6tD-NE-OJM" secondAttribute="centerX" id="GXN-j4-vol"/>
+                            <constraint firstItem="t5D-jY-wod" firstAttribute="top" secondItem="FJz-zw-FoT" secondAttribute="bottom" constant="8" id="OI5-Oo-vOi"/>
+                            <constraint firstItem="FJz-zw-FoT" firstAttribute="top" secondItem="Vo1-0h-CCy" secondAttribute="bottom" constant="158" id="VdO-oW-eAr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="t5D-jY-wod" id="GZs-18-XN2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lYg-dX-BqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="35.532233883058474"/>
         </scene>
     </scenes>
     <resources>
         <image name="down_full.png" width="158" height="457"/>
         <image name="down_half.png" width="158" height="229"/>
+        <image name="next_round_success.png" width="558" height="142"/>
+        <image name="play_again.png" width="450" height="142"/>
         <image name="up_full.png" width="158" height="457"/>
         <image name="up_half.png" width="158" height="229"/>
     </resources>

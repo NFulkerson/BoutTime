@@ -34,6 +34,7 @@
 		D842A2EA1D94329A0097703F /* up_half.png in Resources */ = {isa = PBXBuildFile; fileRef = D842A2D61D94329A0097703F /* up_half.png */; };
 		D842A2EB1D94329A0097703F /* up_half_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D842A2D71D94329A0097703F /* up_half_selected.png */; };
 		D842A2EC1D94329A0097703F /* webview_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D842A2D81D94329A0097703F /* webview_bar.png */; };
+		D8AE42CA1DA39D720041A9CE /* ScoreModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AE42C91DA39D720041A9CE /* ScoreModalViewController.swift */; };
 		D8B583541D9834F000BE76D8 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B583531D9834F000BE76D8 /* Events.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		D842A2D61D94329A0097703F /* up_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_half.png; sourceTree = "<group>"; };
 		D842A2D71D94329A0097703F /* up_half_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_half_selected.png; sourceTree = "<group>"; };
 		D842A2D81D94329A0097703F /* webview_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webview_bar.png; sourceTree = "<group>"; };
+		D8AE42C91DA39D720041A9CE /* ScoreModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreModalViewController.swift; sourceTree = "<group>"; };
 		D8B583531D9834F000BE76D8 /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				D842A2AD1D9425790097703F /* AppDelegate.swift */,
 				D842A2AF1D9425790097703F /* ViewController.swift */,
 				D842A2B11D9425790097703F /* Main.storyboard */,
+				D8AE42C91DA39D720041A9CE /* ScoreModalViewController.swift */,
 				D8B583531D9834F000BE76D8 /* Events.swift */,
 				D842A2B41D9425790097703F /* Assets.xcassets */,
 				D842A2B61D9425790097703F /* LaunchScreen.storyboard */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8B583541D9834F000BE76D8 /* Events.swift in Sources */,
+				D8AE42CA1DA39D720041A9CE /* ScoreModalViewController.swift in Sources */,
 				D842A2B01D9425790097703F /* ViewController.swift in Sources */,
 				D842A2AE1D9425790097703F /* AppDelegate.swift in Sources */,
 			);
