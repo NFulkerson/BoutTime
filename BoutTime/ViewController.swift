@@ -50,6 +50,7 @@ class ViewController: UIViewController {
     @IBAction func nextRound() {
         // Checking equality here can lead to an endless loop of questions, if you
         // abuse the checkAnswer function.
+        toggleLabelTouch()
         resetEvents()
         nextRoundButton.isHidden = true
         if questionsAsked >= rounds {
@@ -145,7 +146,7 @@ class ViewController: UIViewController {
         } else {
             nextRoundButton.setImage(UIImage(named: "next_round_fail.png"), for: .normal)
         }
-        
+        toggleLabelTouch()
         nextRoundButton.isHidden = false
         // TODO: Remove after debugging.
         print(score)
@@ -203,6 +204,19 @@ class ViewController: UIViewController {
         setupChallenge()
     }
     
+    @IBAction func labelTapped(_ sender: UITapGestureRecognizer) {
+        if let label = sender.view as? UILabel {
+            print(label.text!)
+            if let i = presentedEvents.index(where: {
+                $0.title == label.text!
+            }) {
+                print(presentedEvents[i].eventInfoURI)
+            }
+        }
+    }
+    
+    
+    
     // We need this functionality both when we start a round and a new game
     // So let's just separate it into a helper for clarity.
     func resetEvents() {
@@ -215,6 +229,20 @@ class ViewController: UIViewController {
     // this is a bit more flexible.
     func resetClock() {
         timeToAnswer = 60
+    }
+    
+    func toggleLabelTouch() {
+        for label in labelCollection {
+            print(label.text)
+            let enabledStatus = label.isUserInteractionEnabled
+            switch enabledStatus {
+            case true:
+                print("Touch enabled. Disabling.")
+            case false:
+                print("Touch disabled. Enabling.")
+            }
+            label.isUserInteractionEnabled = !enabledStatus
+        }
     }
     
 }

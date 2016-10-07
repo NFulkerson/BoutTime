@@ -37,9 +37,13 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An example 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dij-9t-DD1">
                                                         <color key="backgroundColor" red="1" green="0.97730777140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="KH0-LD-U4r" appends="YES" id="eVZ-WK-3MX"/>
+                                                        </connections>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWy-tn-hoN">
                                                         <state key="normal" image="down_full.png"/>
@@ -53,9 +57,13 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An example 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0u-I8-zRw">
                                                         <color key="backgroundColor" red="1" green="0.97730777140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="DaZ-4E-huI" appends="YES" id="ImM-1D-dYd"/>
+                                                        </connections>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xop-9D-dC2">
                                                         <subviews>
@@ -79,9 +87,13 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An example 3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcL-YW-p40">
                                                         <color key="backgroundColor" red="1" green="0.97730777140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Nw4-yn-Jon" appends="YES" id="F8h-Gt-8e9"/>
+                                                        </connections>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yMH-cG-8PP">
                                                         <subviews>
@@ -105,9 +117,13 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An example 4" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6D-eg-YL2">
                                                         <color key="backgroundColor" red="1" green="0.97730777140000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Uue-DK-dKk" appends="YES" id="hPW-zi-OCy"/>
+                                                        </connections>
                                                     </label>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pu-ja-Vxs">
                                                         <state key="normal" image="up_full.png"/>
@@ -161,6 +177,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KH0-LD-U4r">
+                    <connections>
+                        <action selector="labelTapped:" destination="BYZ-38-t0r" id="gVd-1m-FTB"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="DaZ-4E-huI">
+                    <connections>
+                        <action selector="labelTapped:" destination="BYZ-38-t0r" id="ZKI-2Y-KRZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Nw4-yn-Jon">
+                    <connections>
+                        <action selector="labelTapped:" destination="BYZ-38-t0r" id="QJb-FV-Fyt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Uue-DK-dKk">
+                    <connections>
+                        <action selector="labelTapped:" destination="BYZ-38-t0r" id="jGQ-b1-RIb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="46" y="36"/>
         </scene>
