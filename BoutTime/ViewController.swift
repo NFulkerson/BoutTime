@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     var presentedEvents: [Event] = []
     var timeToAnswer: Int = 60
     let eventsList = EventData()
+
+    var clock = Timer()
     
     // MARK: - UI Interactions, Gestures
     
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         switch motion {
         case .motionShake:
+            endTimer()
             checkAnswers()
         default:
             print("\(motion) ended. Event: \(event)")
@@ -88,14 +91,48 @@ class ViewController: UIViewController {
         print("Preparing to segue to \(segue)")
         if segue.identifier == "showScoreModalSegue" {
             if let scoreView = segue.destination as? ScoreModalViewController {
+                // set destination view's properties, so the view can set up
                 scoreView.score = score
                 scoreView.rounds = rounds
-                playAgain()
+                // we're going to pass along a reference to this view controller
+                // so that we can call the 'play again' function in this class
+                // from the modal view. It doesn't make sense to have the resets
+                // take place in the modal view. It's simply for telling scores.
+                // This is also necessary because my original 'trick'--calling 'playAgain'
+                // before presenting the modal--starts the timer even though the game view
+                // isn't being interacted with or even viewed.
+                scoreView.sender = sender
             }
         }
     }
     
     // MARK: - Helpers
+    func startTimer() {
+        clock = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer() {
+        if timeToAnswer <= 0 {
+            endTimer()
+            checkAnswers()
+        }
+        timeToAnswer -= 1
+        let time = secondsToMinutesSeconds(seconds: timeToAnswer)
+        // This is an ugly and unclear way to do it, but the former uses string interpolation
+        // which is then appended by a string with a leading zero format.
+        gameTimerLabel.text = "\(time.minutes):" + String(format: "%02d", time.seconds)
+    }
+    
+    func endTimer() {
+        clock.invalidate()
+        resetClock()
+    }
+    
+    func secondsToMinutesSeconds(seconds:Int) -> (minutes: Int, seconds: Int) {
+        // this nifty bit of math taken from
+        // http://stackoverflow.com/questions/26794703/swift-integer-conversion-to-hours-minutes-seconds
+        return (minutes: (seconds % 3600) / 60, seconds: seconds % 60)
+    }
     
     func checkAnswers() {
         // TODO: Refactoring.
@@ -123,8 +160,10 @@ class ViewController: UIViewController {
     // This function is responsible for all setup pertaining to a round
     func setupChallenge() {
         questionsAsked += 1
+        gameTimerLabel.text = "1:00"
         retrieveEvents()
         setupLabels()
+        startTimer()
     }
     // This function, as you can guess, retrieves events from the eventsList object.
     // It retrieves four at a time to be presented in the view
@@ -156,7 +195,6 @@ class ViewController: UIViewController {
         }
     }
     
-    
     func playAgain() {
         // remove all events from the presented array
         resetEvents()
@@ -172,7 +210,12 @@ class ViewController: UIViewController {
         // due to the implementation of the retrieveEvents method.
         presentedEvents.removeAll()
     }
-    
+    // Like the above function, we could have just put this code into other functions,
+    // but suppose we have a 'lightning round' or other variations of time limit?
+    // this is a bit more flexible.
+    func resetClock() {
+        timeToAnswer = 60
+    }
     
 }
 

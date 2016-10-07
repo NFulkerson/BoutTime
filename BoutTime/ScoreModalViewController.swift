@@ -15,6 +15,7 @@ class ScoreModalViewController: UIViewController {
     
     var score: Int?
     var rounds: Int?
+    var sender: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class ScoreModalViewController: UIViewController {
     
     @IBAction func dismissScoreModal() {
         dismiss(animated: true, completion: nil)
+        if let vc = sender as? ViewController {
+            vc.playAgain()
+        }
     }
 
 }
