@@ -8,6 +8,7 @@
 
 import UIKit
 import GameKit
+import SafariServices
 
 class ViewController: UIViewController {
     
@@ -211,10 +212,19 @@ class ViewController: UIViewController {
                 $0.title == label.text!
             }) {
                 print(presentedEvents[i].eventInfoURI)
+                print("Loading url...")
+                if let infoURL = URL(string: presentedEvents[i].eventInfoURI) {
+                    presentInfoView(url: infoURL)
+                }
+                
             }
         }
     }
     
+    func presentInfoView(url: URL) {
+        let webInfoView = SFSafariViewController(url: url)
+        self.present(webInfoView, animated: true, completion: nil)
+    }
     
     
     // We need this functionality both when we start a round and a new game
