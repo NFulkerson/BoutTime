@@ -30,22 +30,28 @@ class ViewController: UIViewController {
     // MARK: - UI Interactions, Gestures
     
     @IBAction func moveLabelDown(_ sender: UIButton) {
-        // TODO: Needs to handle cases in which presentedEvents is empty, for whatever reason
-        // we swap positions of events in the array at an index indicated by the sender's IB tag
-        // which ranges from 0 to 3, each correlated with
-        // the label's position in the interface.
-        swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag + 1])
-        // we then go over each label and update its text to properly match the new indexes.
-        // Since we are dealing with a very small subset of items, this isn't an issue
-        // We could likely refactor it to only deal with the values that were swapped,
-        // but this way ensures clean state.
-        setupLabels()
+        
+        if !presentedEvents.isEmpty {
+            // we swap positions of events in the array at an index indicated by the sender's IB tag
+            // which ranges from 0 to 3, each correlated with
+            // the label's position in the interface.
+            swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag + 1])
+            // we then go over each label and update its text to properly match the new indexes.
+            setupLabels()
+        }
+        
     }
     
     @IBAction func moveLabelUp(_ sender: UIButton) {
-        // identical to moveLabelDown, but inverted. May be a good case for refactor.
-        swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag - 1])
-        setupLabels()
+        
+        if !presentedEvents.isEmpty {
+            // we swap positions of events in the array at an index indicated by the sender's IB tag
+            // which ranges from 0 to 3, each correlated with
+            // the label's position in the interface.
+            swap(&presentedEvents[sender.tag], &presentedEvents[sender.tag - 1])
+            // we then go over each label and update its text to properly match the new indexes.
+            setupLabels()
+        }
     }
     
     @IBAction func nextRound() {
