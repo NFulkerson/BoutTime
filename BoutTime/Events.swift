@@ -125,7 +125,11 @@ struct EventData {
         Event(title: "Raspberry Pi, a low-cost, credit card sized computer, is released.", eventInfoURI: "https://en.wikipedia.org/wiki/Raspberry_Pi", eventDate: 2012),
         Event(title: "Scientists at MIT create a quantum computer potentially capable of cracking modern encryption techniques.", eventInfoURI: "http://www.pcworld.com/article/3041115/security/mits-new-5-atom-quantum-computer-could-transform-encryption.html", eventDate: 2016)
     ]
-    
+    /**
+     Retrieves a random event from the EventList data source.
+     
+     - Returns: An object of type Event.
+     */
     func getRandomEvent() -> Event {
         let randomIndex = getRandomIndex()
         return events[randomIndex]
